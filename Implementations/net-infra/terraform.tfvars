@@ -1,0 +1,15 @@
+gcp_auth_file = "../../auth/playground-s-11-fc1cba18-80544081ce19.json"
+#gcp_region = "value"
+gcp_project  = "playground-s-11-fc1cba18"
+vpc_name = "gke-vpc"
+#routing_mode = ""
+subnet_name = "gke-subnet"
+#subnet_region = ""
+#pods_ip_range =
+#service_ip_range =
+router_name = "gke-router"
+nat_name = "gke-nat"
+#subnet_to_nat = ""
+#nat_ip_allocation_option = ""
+#source_ip_ranges_to_nat = [""]
+nat_address_name = "gke-nat-address"
