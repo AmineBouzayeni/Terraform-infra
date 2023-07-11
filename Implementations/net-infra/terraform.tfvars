@@ -1,6 +1,6 @@
-gcp_auth_file = "../../auth/playground-s-11-fc1cba18-80544081ce19.json"
+gcp_auth_file = "../../auth/playground-s-11-93f117b1-68a584d30823.json"
 #gcp_region = "value"
-gcp_project  = "playground-s-11-fc1cba18"
+gcp_project  = "playground-s-11-93f117b1"
 vpc_name = "gke-vpc"
 #routing_mode = ""
 subnet_name = "gke-subnet"

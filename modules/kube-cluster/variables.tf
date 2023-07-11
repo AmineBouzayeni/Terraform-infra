@@ -65,3 +65,11 @@ variable "second_max_node_count" {
   description = "max node count for the first pool"
   default     = 5
 }
+#Labels
+variable "first_pool_label" {
+  description = "second pool label"
+}
+
+variable "second_pool_label" {
+  description = "second pool label"
+}

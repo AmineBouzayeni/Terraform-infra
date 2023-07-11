@@ -1,6 +1,6 @@
 
 resource "google_storage_bucket" "tf-state-dockercoins" {
-  name          = "tf-state-dockercoins-teolia-amineb-2"
+  name          = "tf-state-dockercoins-teolia-amineb-3"
   location      = "US"
   storage_class = "STANDARD"
 

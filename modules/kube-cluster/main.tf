@@ -49,7 +49,7 @@ resource "google_container_node_pool" "first-node-pool" {
     preemptible  = false
     machine_type = var.first_machine_type
     labels = {
-      app = "component"
+      app = var.first_pool_label
     }
   }
 }
@@ -73,7 +73,7 @@ resource "google_container_node_pool" "second-node-pool" {
     preemptible  = false
     machine_type = var.second_machine_type
     labels = {
-      app = "worker"
+      app = var.second_pool_label
     }
   }
 }
