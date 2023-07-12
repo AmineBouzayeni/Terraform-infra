@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        users: actions/checkout@master
+        uses: actions/checkout@master
       - name: Loop over implementations and validate
         run: |
           cd ./implementations
