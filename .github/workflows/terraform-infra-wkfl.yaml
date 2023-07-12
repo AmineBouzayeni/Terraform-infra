@@ -11,9 +11,9 @@ jobs:
       - name: Loop over implementations and validate
         run: |
           cd ./Implementations
-          for directory in */ 
-            do
-              cd ./$directory
-              terraform init -backend=false
-              terraform validate
+          for directory in */; do
+            cd ./$directory
+            terraform init -backend=false
+            terraform validate
+            cd ../
           done  
