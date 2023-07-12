@@ -13,6 +13,7 @@ jobs:
           cd ./implementations
           for directory in */; do
             cd ./$directory
+            echo "Validating the ${directory} implementation"
             terraform init -backend=false
             terraform validate
             cd ../
@@ -22,6 +23,7 @@ jobs:
           cd ./modules
           for directory in */; do
             cd ./$directory
+            echo "Validating the ${directory} module"
             terraform init -backend=false
             terraform validate
             cd ../
