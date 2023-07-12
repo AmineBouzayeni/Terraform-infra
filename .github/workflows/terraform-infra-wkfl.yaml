@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@master
       - name: Loop over implementations and validate
         run: |
-          cd ./implementations
+          cd ./Implementations
           for directory in */ do
             cd $directory
             terraform init -backend=false
