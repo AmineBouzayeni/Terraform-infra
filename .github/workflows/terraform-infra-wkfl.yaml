@@ -13,7 +13,7 @@ jobs:
           cd ./Implementations
           for directory in */ 
             do
-              cd $directory
+              cd ./$directory
               terraform init -backend=false
               terraform validate
           done  
