@@ -1,0 +1,30 @@
+name: Terraform Infra workflow
+run-name: Terraform Infra CI
+on: [push]
+jobs:
+  ValidateImplementations:
+    name: Validate Terraform Implementations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Loop over implementations and validate
+        run: |
+          cd ./implementations
+          for directory in */; do
+            cd ./$directory
+            echo "Validating the ${directory} implementation"
+            terraform init -backend=false
+            terraform validate
+            cd ../
+          done
+      - name: Loop over modules and validate
+        run: |
+          cd ./modules
+          for directory in */; do
+            cd ./$directory
+            echo "Validating the ${directory} module"
+            terraform init -backend=false
+            terraform validate
+            cd ../
+          done     
