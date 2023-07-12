@@ -2,15 +2,19 @@
 # data "google_project" "project" {
 # }
 # Resource to create and configure the GKE-Cluster
+locals {
+  logging_service = var.enable_fluent_bit == true ? "logging.googleapis.com/kubernetes" : "none"
+}
+
 resource "google_container_cluster" "dockercoins-cluster" {
   name                     = var.cluster_name
   location                 = var.cluster_location
   remove_default_node_pool = true
   initial_node_count       = 1
-  logging_service          = "logging.googleapis.com/kubernetes" #Deploy a fluent bit agent on each application and scrape all the logs that the apps sends to the console. It can cost a lot.
+  logging_service          = local.logging_service #Deploy a fluent bit agent on each application and scrape all the logs that the apps sends to the console. It can cost a lot.
   network                  = var.cluster_vpc
   subnetwork               = var.cluster_subnet
-  networking_mode          = "VPC_NATIVE" # Type of cluster that has many advantages such as: Pods IP are reserved before the pods are created in the cluster. You can setup rules based on those ranges.
+  networking_mode          = var.networking_mode #"VPC_NATIVE"  Type of cluster that has many advantages such as: Pods IP are reserved before the pods are created in the cluster. You can setup rules based on those ranges.
   #node_locations           = var.node_locations
   addons_config {
     http_load_balancing {
@@ -21,7 +25,7 @@ resource "google_container_cluster" "dockercoins-cluster" {
     }
   }
   release_channel {
-    channel = "REGULAR" # subscribe to the REGULAR release channel for kubernetes versions update
+    channel = var.release_channel # subscribe to the REGULAR release channel for kubernetes versions update
   }
   # Adding this block enables IP aliasing: A network interface is associated with more than one IP address.
   ip_allocation_policy {

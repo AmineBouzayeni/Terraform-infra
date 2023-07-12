@@ -7,18 +7,35 @@ variable "cluster_location" {
   description = "control plane and node pools locations"
   default     = "europe-west1-a"
 }
+variable "cluster_vpc" {
+  description = "the cluster VPC"
+}
 variable "cluster_subnet" {
   description = "cluster subnet"
 }
-variable "node_locations" {
-  description = "the second availability zone to create a multi-zone cluster"
-  default = [
-    "europe-west1-b"
-  ]
+variable "networking_mode" {
+  description = "Cluster's networking mode"
+  validation {
+    condition     = var.networking_mode == "VPC_NATIVE" || var.networking_mode == "ROUTES"
+    error_message = "networking_mode must be either VPC_NATIVE or ROUTES"
+  }
 }
-variable "cluster_vpc" {
-  description = "the cluster VPC"
-  default     = "default"
+variable "enable_fluent_bit" {
+  description = "enable fluent bit agent installation"
+  type        = bool
+}
+# variable "node_locations" {
+#   description = "the second availability zone to create a multi-zone cluster"
+#   default = [
+#     "europe-west1-b"
+#   ]
+# }
+variable "release_channel" {
+  description = "Release channel for kubernetes version upgrades"
+  validation {
+    condition     = var.release_channel == "RAPID" || var.release_channel == "REGULAR" || var.release_channel == "STABLE"
+    error_message = "Choose a release channel: RAPID, REGULAR or STABLE"
+  }
 }
 # Node pools configuration
 #Naming
@@ -48,22 +65,18 @@ variable "second_machine_type" {
 # Node count
 variable "first_min_node_count" {
   description = "min node count for the first pool"
-  default     = 1
 }
 
 variable "first_max_node_count" {
   description = "max node count for the first pool"
-  default     = 5
 }
 
 variable "second_min_node_count" {
   description = "min node count for the first pool"
-  default     = 1
 }
 
 variable "second_max_node_count" {
   description = "max node count for the first pool"
-  default     = 5
 }
 #Labels
 variable "first_pool_label" {

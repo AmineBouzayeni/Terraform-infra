@@ -28,12 +28,29 @@ variable "cluster_location" {
 # }
 variable "cluster_vpc" {
   description = "the cluster VPC"
-  default     = "default"
 }
 
 variable "cluster_subnet" {
   description = "the cluster subnet"
-  default = "gke-subnet"
+  default     = "gke-subnet"
+}
+variable "networking_mode" {
+  description = "Cluster's networking mode"
+  validation {
+    condition     = var.networking_mode == "VPC_NATIVE" || var.networking_mode == "ROUTES"
+    error_message = "networking_mode must be either VPC_NATIVE or ROUTES"
+  }
+}
+variable "enable_fluent_bit" {
+  description = "enable fluent bit agent installation"
+  type        = bool
+}
+variable "release_channel" {
+  description = "Release channel for kubernetes version upgrades"
+  validation {
+    condition     = var.release_channel == "RAPID" || var.release_channel == "REGULAR" || var.release_channel == "STABLE"
+    error_message = "Choose a release channel: RAPID, REGULAR or STABLE"
+  }
 }
 #Node pool configuration
 #Naming

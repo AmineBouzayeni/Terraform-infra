@@ -1,9 +1,9 @@
 output "vpc_id" {
-    value = google_compute_network.gke_cluster.id
+  value = google_compute_network.gke_cluster_vpc.id
 }
 
 output "subnet_address" {
-    value = google_compute_subnetwork.gke_cluster_subnet 
+  value = google_compute_subnetwork.gke_cluster_subnet
 }
 
 output "router_id" {
