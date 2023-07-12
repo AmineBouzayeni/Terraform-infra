@@ -10,10 +10,19 @@ jobs:
         uses: actions/checkout@master
       - name: Loop over implementations and validate
         run: |
-          cd ./Implementations
+          cd ./implementations
           for directory in */; do
             cd ./$directory
             terraform init -backend=false
             terraform validate
             cd ../
-          done  
+          done
+      - name: Loop over modules and validate
+        run: |
+          cd ./modules
+          for directory in */; do
+            cd ./$directory
+            terraform init -backend=false
+            terraform validate
+            cd ../
+          done     
