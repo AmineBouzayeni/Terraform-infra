@@ -10,14 +10,20 @@ module "kubernetes_cluster" {
   release_channel       = var.release_channel
   first_name            = var.first_name
   second_name           = var.second_name
+  third_name            = var.third_name
   first_pool_count      = var.first_pool_count
   second_pool_count     = var.second_pool_count
+  third_pool_count      = var.third_pool_count
   first_machine_type    = var.first_machine_type
   second_machine_type   = var.second_machine_type
+  third_machine_type    = var.third_machine_type 
   first_min_node_count  = var.first_min_node_count
   first_max_node_count  = var.first_max_node_count
   second_min_node_count = var.second_min_node_count
   second_max_node_count = var.second_max_node_count
+  third_min_node_count  = var.third_min_node_count
+  third_max_node_count  = var.third_max_node_count  
   first_pool_label      = var.first_pool_label
   second_pool_label     = var.second_pool_label
+  third_pool_label      = var.third_pool_label 
 }

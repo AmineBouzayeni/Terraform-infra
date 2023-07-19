@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "tf-state-dockercoins-teolia-amineb-5"
+    bucket = "tf-state-dockercoins-teolia-amineb-7"
     prefix = "terraform/dockercoins.tfstate"
   }
 }

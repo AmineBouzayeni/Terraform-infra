@@ -81,3 +81,27 @@ resource "google_container_node_pool" "second-node-pool" {
     }
   }
 }
+
+# Third node pool dedicated to testing
+resource "google_container_node_pool" "third-node-pool" {
+  name       = var.third_name
+  location   = var.cluster_location
+  cluster    = google_container_cluster.dockercoins-cluster.name
+  node_count = var.third_pool_count
+  management {
+    auto_repair  = true
+    auto_upgrade = true
+  }
+  autoscaling {
+    min_node_count = var.third_min_node_count
+    max_node_count = var.third_max_node_count
+  }
+  node_config {
+    #Disabling fault-tolerance
+    preemptible  = false
+    machine_type = var.third_machine_type
+    labels = {
+      app = var.third_pool_label
+    }
+  }
+}

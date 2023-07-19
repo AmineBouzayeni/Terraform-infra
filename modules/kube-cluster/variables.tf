@@ -46,6 +46,10 @@ variable "first_name" {
 variable "second_name" {
   description = "second node pool name"
 }
+
+variable "third_name" {
+  description = "third node pool name"
+}
 #Number of nodes
 variable "first_pool_count" {
   description = "number of node of the first node pool"
@@ -54,6 +58,10 @@ variable "first_pool_count" {
 variable "second_pool_count" {
   description = "number of node of the second node pool"
 }
+
+variable "third_pool_count" {
+  description = "number of node of the third node pool"
+}
 #Machine type
 variable "first_machine_type" {
   description = "machine type of nodes in the first pool"
@@ -61,6 +69,10 @@ variable "first_machine_type" {
 
 variable "second_machine_type" {
   description = "machine type of nodes in the second pool"
+}
+
+variable "third_machine_type" {
+  description = "machine type of nodes in the third pool"
 }
 # Node count
 variable "first_min_node_count" {
@@ -72,11 +84,19 @@ variable "first_max_node_count" {
 }
 
 variable "second_min_node_count" {
-  description = "min node count for the first pool"
+  description = "min node count for the second pool"
 }
 
 variable "second_max_node_count" {
-  description = "max node count for the first pool"
+  description = "max node count for the second pool"
+}
+
+variable "third_min_node_count" {
+  description = "min node count for the third pool"
+}
+
+variable "third_max_node_count" {
+  description = "max node count for the third pool"
 }
 #Labels
 variable "first_pool_label" {
@@ -85,4 +105,8 @@ variable "first_pool_label" {
 
 variable "second_pool_label" {
   description = "second pool label"
+}
+
+variable "third_pool_label" {
+  description = "third pool label"
 }
