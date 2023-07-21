@@ -1,5 +1,6 @@
 module "net_infra" {
   source                   = "../../modules/net-infra"
+  gcp_project              = var.gcp_project
   vpc_name                 = var.vpc_name
   mtu                      = var.mtu
   routing_mode             = var.routing_mode
@@ -16,4 +17,20 @@ module "net_infra" {
   nat_address_name         = var.nat_address_name
   address_type             = var.address_type
   network_tier             = var.network_tier
+}
+
+output "vpc_id" {
+  value = module.net_infra.vpc_id
+}
+
+output "subnet_address" {
+  value = module.net_infra.subnet_address
+}
+
+output "router_id" {
+  value = module.net_infra.router_id
+}
+
+output "nat_id" {
+  value = module.net_infra.nat_id
 }

@@ -1,3 +1,7 @@
+#Enable APIs vars
+variable "gcp_project" {
+  description = "gcp project name"
+}
 #VPC
 variable "vpc_name" {
   description = "VPC name"

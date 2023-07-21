@@ -1,3 +1,9 @@
+# Enable compute engine API
+# resource "google_project_service" "project_iam" {
+#   project = var.gcp_project
+#   service = "compute.googleapis.com.googleapis.com"
+# }
+
 resource "google_compute_network" "gke_cluster_vpc" {
   name                            = var.vpc_name
   routing_mode                    = var.routing_mode # The vpc will create the route entries for subnet in the concerned region.

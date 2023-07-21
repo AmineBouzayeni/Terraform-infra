@@ -55,6 +55,10 @@ resource "google_container_node_pool" "first-node-pool" {
     labels = {
       app = var.first_pool_label
     }
+    tags = [var.first_node_pool_tags]
+  }
+  network_config {
+    enable_private_nodes = true # This node pool will host the backend. It will therefore be a private one.
   }
 }
 
@@ -79,29 +83,6 @@ resource "google_container_node_pool" "second-node-pool" {
     labels = {
       app = var.second_pool_label
     }
-  }
-}
-
-# Third node pool dedicated to testing
-resource "google_container_node_pool" "third-node-pool" {
-  name       = var.third_name
-  location   = var.cluster_location
-  cluster    = google_container_cluster.dockercoins-cluster.name
-  node_count = var.third_pool_count
-  management {
-    auto_repair  = true
-    auto_upgrade = true
-  }
-  autoscaling {
-    min_node_count = var.third_min_node_count
-    max_node_count = var.third_max_node_count
-  }
-  node_config {
-    #Disabling fault-tolerance
-    preemptible  = false
-    machine_type = var.third_machine_type
-    labels = {
-      app = var.third_pool_label
-    }
+    tags = [var.second_node_pool_tags]
   }
 }
