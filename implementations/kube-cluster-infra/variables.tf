@@ -7,6 +7,11 @@ variable "gcp_region" {
 variable "gcp_project" {
   description = "gcp project name"
 }
+
+variable "credentials_file" {
+  description = "Credentials file relative path"
+  default = "../../auth/compute-engine-sa.json"
+}
 #VPC
 variable "vpc_name" {
   description = "VPC name"
