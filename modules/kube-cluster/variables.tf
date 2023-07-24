@@ -72,11 +72,11 @@ variable "first_max_node_count" {
 }
 
 variable "second_min_node_count" {
-  description = "min node count for the first pool"
+  description = "min node count for the second pool"
 }
 
 variable "second_max_node_count" {
-  description = "max node count for the first pool"
+  description = "max node count for the second pool"
 }
 #Labels
 variable "first_pool_label" {
@@ -85,4 +85,12 @@ variable "first_pool_label" {
 
 variable "second_pool_label" {
   description = "second pool label"
+}
+#Tags
+variable "first_node_pool_tags" {
+  description = "first node pool tags to apply firewall rules"
+}
+
+variable "second_node_pool_tags" {
+  description = "second node pool tags to apply firewall rules"
 }

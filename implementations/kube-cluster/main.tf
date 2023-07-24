@@ -20,4 +20,10 @@ module "kubernetes_cluster" {
   second_max_node_count = var.second_max_node_count
   first_pool_label      = var.first_pool_label
   second_pool_label     = var.second_pool_label
+  first_node_pool_tags  = var.first_node_pool_tags
+  second_node_pool_tags = var.second_node_pool_tags
+}
+
+output "cluster-endpoint" {
+  value = module.kubernetes_cluster.cluster_endpoint
 }

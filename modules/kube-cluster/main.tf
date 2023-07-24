@@ -55,6 +55,10 @@ resource "google_container_node_pool" "first-node-pool" {
     labels = {
       app = var.first_pool_label
     }
+    tags = [var.first_node_pool_tags]
+  }
+  network_config {
+    enable_private_nodes = true # This node pool will host the backend. It will therefore be a private one.
   }
 }
 
@@ -79,5 +83,6 @@ resource "google_container_node_pool" "second-node-pool" {
     labels = {
       app = var.second_pool_label
     }
+    tags = [var.second_node_pool_tags]
   }
 }

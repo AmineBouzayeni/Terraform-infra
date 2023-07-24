@@ -105,3 +105,11 @@ variable "first_pool_label" {
 variable "second_pool_label" {
   description = "second pool label"
 }
+#Tags
+variable "first_node_pool_tags" {
+  description = "first node pool tags to apply firewall rules"
+}
+
+variable "second_node_pool_tags" {
+  description = "second node pool tags to apply firewall rules"
+}

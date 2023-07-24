@@ -1,3 +1,3 @@
-gcp_auth_file = "../../auth/playground-s-11-3a56e75f-085b6ff195f9.json"
+gcp_auth_file = "../../auth/teolia-school-devops-cec00abd7822.json"
 #gcp_region = "value"
-gcp_project = "playground-s-11-3a56e75f"
+gcp_project = "teolia-school-devops"
