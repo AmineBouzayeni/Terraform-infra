@@ -1,14 +1,31 @@
-## Provider CONFIG VARS
-gcp_auth_file = "../../auth/teolia-school-devops-b5a9d4a72f4b.json"
 #gcp_region = "value"
 gcp_project = "teolia-school-devops"
+credentials_file = "../../auth/compute-engine-sa.json"
+### VPC CONFIG VARS
+vpc_name = "gke-vpc"
+#mtu = 0 Defaulted
+routing_mode = "REGIONAL"
+
+### Subnet CONFIG VARS
+subnet_name = "gke-subnet"
+#subnet_cidr_range = "" Defaulted
+#subnet_region = "" Defaulted
+#pods_ip_range = Defaulted
+#service_ip_range = Defaulted
+#pods_ip_range_name = "" Defaulted
+#service_ip_range_name = "" Defaulted
+
+# FIREWALL RULE configuration
+rule_name     = "app-rule"
+port_range    = "30000-30010"
+source_ranges = "0.0.0.0/0"
+target_tags   = "second-tag"
+
 
 #Cluster config
 cluster_name     = "dockercoins-cluster-teo"
 cluster_location = "europe-west1-b"
 #node_locations = [ "europe-west1-c" ]
-cluster_vpc       = "gke-vpc"
-cluster_subnet    = "gke-subnet"
 enable_fluent_bit = false
 networking_mode   = "VPC_NATIVE"
 release_channel   = "REGULAR"

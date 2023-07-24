@@ -27,4 +27,4 @@ jobs:
             terraform init -backend=false
             terraform validate
             cd ../
-          done     
+          done             
