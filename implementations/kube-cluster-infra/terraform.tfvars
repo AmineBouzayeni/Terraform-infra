@@ -46,3 +46,4 @@ second_node_pool_tags = "second-tag"
 #first_max_node_count = 0 Defaulted
 #second_min_node_count = 0 Defaulted
 #second_max_node_count = 0 Defaulted
+repository_name        = "teolia-school-amineb"        
