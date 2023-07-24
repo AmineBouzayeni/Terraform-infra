@@ -1,6 +1,6 @@
 #gcp_region = "value"
 gcp_project = "teolia-school-devops"
-
+credentials_file = "../../auth/compute-engine-sa.json"
 ### VPC CONFIG VARS
 vpc_name = "gke-vpc"
 #mtu = 0 Defaulted

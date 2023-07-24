@@ -8,19 +8,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
-      - name: Setup Terragrunt
-        uses: autero1/action-terragrunt@v1.1.0
-        with:
-          terragrunt_version: "latest"
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Loop over implementations and validate
         run: |
           cd ./implementations
           for directory in */; do
             cd ./$directory
             echo "Validating the ${directory} implementation"
-            terragrunt init -backend=false
-            terragrunt validate
+            terraform init -backend=false
+            terraform validate
             cd ../
           done
       - name: Loop over modules and validate
@@ -29,7 +24,7 @@ jobs:
           for directory in */; do
             cd ./$directory
             echo "Validating the ${directory} module"
-            terragrunt init -backend=false
-            terragrunt validate
+            terraform init -backend=false
+            terraform validate
             cd ../
           done             
