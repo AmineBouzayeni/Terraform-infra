@@ -18,8 +18,9 @@ first_name            = "first-component-pool"
 second_name           = "second-component-pool"
 first_pool_count      = 1
 second_pool_count     = 1
-first_machine_type    = "t2d-standard-4" #"t2d-standard-4" # 4 Virtual processor, 16 Go of memory to run the rng, hasher & worker components
-second_machine_type   = "t2d-standard-2" #"t2d-standard-2" # 2 Virtual processor, 8 Go of memory to run the web & redis server components
+# Will choose to work with N2 machine types. It is good for contenairized application with low/middle traffic.
+first_machine_type    = "n2-highcpu-4" #"n2-highcpu-4" # 4 Virtual processor, 4 Go of memory to run the rng, hasher, worker & redis-server components.
+second_machine_type   = "n2-highcpu-2" #"n2-highcpu-2" # 2 Virtual processor, 2 Go of memory to run the webui component.
 first_pool_label      = "first"
 second_pool_label     = "second"
 first_node_pool_tags  = ""
