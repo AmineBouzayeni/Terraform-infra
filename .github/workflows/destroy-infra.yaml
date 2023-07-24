@@ -2,7 +2,7 @@ name: Terraform Infra destroy workflow
 run-name: Terraform Infra destroy CI
 on:
     schedule:
-        - cron: '11 13 * * *'
+        - cron: '20 13 * * *'
 jobs:
     destroyInfra:
         name: Validate Terraform Implementations
