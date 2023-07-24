@@ -1,36 +1,36 @@
-name: Terraform Infra Deploy workflow
-run-name: Terraform Infra Deploy CI
-on:
-    schedule:
-        - cron: "30 7 * * *"
-jobs:
-    DeployInfra:
-        name: Validate Terraform Implementations
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@master
-            - name: Setup Terragrunt
-              uses: autero1/action-terragrunt@v1.1.0
-              with:
-                terragrunt_version: "latest"
-                token: ${{ secrets.GITHUB_TOKEN }}
-            - name: Configure credentials for Service Account.
-              env: 
-                KEY: ${{ secrets.ADMIN_SA_KEY }}
-              run: |
-                mkdir auth
-                echo "$KEY" > auth/admin-sa-sa.json
-            - name: Deploy devops service account
-              run: |
-                cd implementations/service_account
-                terragrunt init && terragrunt apply -auto-approve
-            - name: Configure credentials for Kubernetes Cluster Deployment.
-              env:
-                KEY: ${{ secrets.COMPUTE_ENGINE_SA_KEY }}
-              run: |
-                echo "$KEY" > auth/compute-engine-sa.json
-            - name: Deploy kubernetes cluster infra
-              run: |
-                cd implementations/kube-cluster-infra
-                terragrunt init && terragrunt apply -auto-approve
+# name: Terraform Infra Deploy workflow
+# run-name: Terraform Infra Deploy CI
+# on:
+#     schedule:
+#         - cron: "30 7 * * *"
+# jobs:
+#     DeployInfra:
+#         name: Validate Terraform Implementations
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Checkout code
+#               uses: actions/checkout@master
+#             - name: Setup Terragrunt
+#               uses: autero1/action-terragrunt@v1.1.0
+#               with:
+#                 terragrunt_version: "latest"
+#                 token: ${{ secrets.GITHUB_TOKEN }}
+#             - name: Configure credentials for Service Account.
+#               env: 
+#                 KEY: ${{ secrets.ADMIN_SA_KEY }}
+#               run: |
+#                 mkdir auth
+#                 echo "$KEY" > auth/admin-sa-sa.json
+#             - name: Deploy devops service account
+#               run: |
+#                 cd implementations/service_account
+#                 terragrunt init && terragrunt apply -auto-approve
+#             - name: Configure credentials for Kubernetes Cluster Deployment.
+#               env:
+#                 KEY: ${{ secrets.COMPUTE_ENGINE_SA_KEY }}
+#               run: |
+#                 echo "$KEY" > auth/compute-engine-sa.json
+#             - name: Deploy kubernetes cluster infra
+#               run: |
+#                 cd implementations/kube-cluster-infra
+#                 terragrunt init && terragrunt apply -auto-approve
