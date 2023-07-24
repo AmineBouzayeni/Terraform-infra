@@ -2,7 +2,7 @@ name: Terraform Infra destroy workflow
 run-name: Terraform Infra destroy CI
 on:
     schedule:
-        - cron: "43 12 * * *"
+        - cron: '11 13 * * *'
 jobs:
     destroyInfra:
         name: Validate Terraform Implementations
@@ -16,16 +16,20 @@ jobs:
                 terragrunt_version: "latest"
                 token: ${{ secrets.GITHUB_TOKEN }}
             - name: Configure credentials for Service Account.
+              env: 
+                KEY: ${{ secrets.ADMIN_SA_KEY }}
               run: |
                 mkdir auth
-                echo ${{ secrets.ADMIN_SA_KEY }} > auth/admin-sa-sa.json
+                echo "$KEY" > auth/admin-sa-sa.json
             - name: destroy devops service account
               run: |
                 cd implementations/service_account
                 terragrunt init && terragrunt destroy -auto-approve
             - name: Configure credentials for Kubernetes Cluster Deployment.
+              env:
+                KEY: ${{ secrets.COMPUTE_ENGINE_SA_KEY }}
               run: |
-                echo ${{ secrets.COMPUTE_ENGINE_SA_KEY }} > auth/compute-engine-sa.json    
+                echo "$KEY" > auth/compute-engine-sa.json
             - name: destroy kubernetes cluster infra
               run: |
                 cd implementations/kube-cluster-infra
