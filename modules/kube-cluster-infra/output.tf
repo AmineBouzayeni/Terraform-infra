@@ -13,3 +13,15 @@ output "router_id" {
 output "nat_id" {
   value = google_compute_router_nat.nat.id
 }
+
+output "firewall_id" {
+  value = google_compute_firewall.rules.id
+}
+
+output "cluster_endpoint" {
+  value = google_container_cluster.dockercoins-cluster.endpoint
+}
+
+output "artifactregistry_id" {
+  value = google_artifact_registry_repository.amineb-teolia.id
+}

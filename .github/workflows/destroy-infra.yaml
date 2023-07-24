@@ -1,0 +1,25 @@
+name: Terraform Infra destroy workflow
+run-name: Terraform Infra destroy CI
+on:
+    schedule:
+        - cron: "30 19 * * *"
+jobs:
+    destroyInfra:
+        name: Validate Terraform Implementations
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@master
+            - name: Setup Terragrunt
+              uses: autero1/action-terragrunt@v1.1.0
+              with:
+                terragrunt_version: "latest"
+                token: ${{ secrets.GITHUB_TOKEN }}
+            - name: destroy devops service account
+              run: |
+                cd implementations/service_account
+                terragrunt init && terragrunt destroy -auto-approve
+            - name: destroy kubernetes cluster infra
+              run: |
+                cd implementations/kube-cluster-infra
+                terragrunt init && terragrunt destroy -auto-approve

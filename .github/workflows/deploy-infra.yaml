@@ -1,0 +1,25 @@
+name: Terraform Infra Deploy workflow
+run-name: Terraform Infra Deploy CI
+on:
+    schedule:
+        - cron: "30 7 * * *"
+jobs:
+    DeployInfra:
+        name: Validate Terraform Implementations
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@master
+            - name: Setup Terragrunt
+              uses: autero1/action-terragrunt@v1.1.0
+              with:
+                terragrunt_version: "latest"
+                token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Deploy devops service account
+              run: |
+                cd implementations/service_account
+                terragrunt init && terragrunt apply -auto-approve
+            - name: Deploy kubernetes cluster infra
+              run: |
+                cd implementations/kube-cluster-infra
+                terragrunt init && terragrunt apply -auto-approve
