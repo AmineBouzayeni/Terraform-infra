@@ -18,9 +18,9 @@ first_name            = "first-component-pool"
 second_name           = "second-component-pool"
 first_pool_count      = 1
 second_pool_count     = 1
-# Will choose to work with N2 machine types. It is good for contenairized application with low/middle traffic.
-first_machine_type    = "n2-highcpu-4" #"n2-highcpu-4" # 4 Virtual processor, 4 Go of memory to run the rng, hasher, worker & redis-server components.
-second_machine_type   = "n2-highcpu-2" #"n2-highcpu-2" # 2 Virtual processor, 2 Go of memory to run the webui component.
+# Will choose to work with E2 machine types. It is a low cost machine type
+first_machine_type    = "e2-highcpu-4" #"e2-highcpu-4" # 4 Virtual processor, 4 Go of memory to run the rng, hasher, worker & redis-server components.
+second_machine_type   = "e2-highcpu-2" #"e2-highcpu-2" # 2 Virtual processor, 2 Go of memory to run the webui component.
 first_pool_label      = "first"
 second_pool_label     = "second"
 first_node_pool_tags  = ""
