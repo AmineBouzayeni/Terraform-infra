@@ -2,7 +2,7 @@ name: Terraform Infra Deploy workflow
 run-name: Terraform Infra Deploy CI
 on: 
   schedule:
-    - cron: '45 7 * * *'
+    - cron: '50 7 * * *'
 jobs:
     DeployInfra:
         name: Validate Terraform Implementations
