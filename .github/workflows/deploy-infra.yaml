@@ -1,12 +1,8 @@
 name: Terraform Infra Deploy workflow
 run-name: Terraform Infra Deploy CI
-<<<<<<< HEAD
 on: 
   schedule:
-    - cron: '40 7 * * *'
-=======
-on: [push]
->>>>>>> main
+    - cron: '50 7 * * *'
 jobs:
     DeployInfra:
         name: Validate Terraform Implementations
@@ -40,8 +36,5 @@ jobs:
               run: |
                 cd implementations/kube-cluster-infra
                 terragrunt init && terragrunt apply -auto-approve
-<<<<<<< HEAD
               env:
-                GOOGLE_CREDENTIALS: ${{ secrets.COMPUTE_ENGINE_SA_KEY }}  # Backend credentials  
-=======
->>>>>>> main
+                GOOGLE_CREDENTIALS: ${{ secrets.COMPUTE_ENGINE_SA_KEY }}  # Backend credentials
