@@ -3,9 +3,12 @@ run-name: Terraform Infra Deploy CI
 on: 
   schedule:
     - cron: '50 7 * * *'
+  push:
+    branches:
+      - 'main'   
 jobs:
     DeployInfra:
-        name: Validate Terraform Implementations
+        name: Deploy Infra
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
