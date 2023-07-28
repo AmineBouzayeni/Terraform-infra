@@ -89,3 +89,11 @@ resource "google_project_iam_member" "container_admin_policy" {
 
   member = "serviceAccount:${google_service_account.cloudop_service_account.email}"
 }
+
+# Service Account Token Creator
+resource "google_project_iam_member" "service_account_token_creator" {
+  project = var.gcp_project
+  role    = "roles/iam.serviceAccountTokenCreator"
+
+  member = "serviceAccount:${google_service_account.cloudop_service_account.email}"
+}
