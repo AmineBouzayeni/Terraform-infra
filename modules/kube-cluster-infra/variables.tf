@@ -201,3 +201,7 @@ variable "second_node_pool_tags" {
 variable "repository_name" {
   description = "google artifact registry repository name"
 }
+# Ingress IP
+variable "ingress_ip_address_name" {
+  description = "ip address to be allocated to the ingress object"
+}

@@ -1,5 +1,5 @@
 #gcp_region = "value"
-gcp_project = "teolia-school-devops"
+gcp_project      = "teolia-school-devops"
 credentials_file = "../../auth/compute-engine-sa.json"
 ### VPC CONFIG VARS
 vpc_name = "gke-vpc"
@@ -31,10 +31,10 @@ networking_mode   = "VPC_NATIVE"
 release_channel   = "REGULAR"
 
 #Node pools config
-first_name            = "first-component-pool"
-second_name           = "second-component-pool"
-first_pool_count      = 1
-second_pool_count     = 1
+first_name        = "first-component-pool"
+second_name       = "second-component-pool"
+first_pool_count  = 1
+second_pool_count = 1
 # Will choose to work with E2 machine types. It is a low cost machine type
 first_machine_type    = "e2-highcpu-4" #"e2-highcpu-4" # 4 Virtual processor, 4 Go of memory to run the rng, hasher, worker & redis-server components.
 second_machine_type   = "e2-highcpu-2" #"e2-highcpu-2" # 2 Virtual processor, 2 Go of memory to run the webui component.
@@ -46,4 +46,4 @@ second_node_pool_tags = "second-tag"
 #first_max_node_count = 0 Defaulted
 #second_min_node_count = 0 Defaulted
 #second_max_node_count = 0 Defaulted
-repository_name        = "teolia-school-amineb"        
+repository_name = "teolia-school-amineb"
