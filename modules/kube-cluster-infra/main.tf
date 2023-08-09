@@ -165,8 +165,7 @@ resource "google_artifact_registry_repository" "amineb-teolia" {
   format        = "DOCKER"
 }
 # Create ingress IP address
-resource "google_compute_address" "ingress-ip" {
+resource "google_compute_global_address" "ingress-ip" {
   name         = var.ingress_ip_address_name
   address_type = var.address_type #"EXTERNAL"
-  network_tier = var.network_tier #"PREMIUM"# on google premium backbone. STANDARD uses regular ISP networks
 }
