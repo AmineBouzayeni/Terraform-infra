@@ -46,5 +46,7 @@ module "kube_cluster_infra" {
   first_node_pool_tags  = var.first_node_pool_tags
   second_node_pool_tags = var.second_node_pool_tags
   # ARTIFACT REGISTRY REPO
-  repository_name       = var.repository_name
-}
+  repository_name = var.repository_name
+  # Ingress IP
+  ingress_ip_address_name = var.ingress_ip_address_name
+} 

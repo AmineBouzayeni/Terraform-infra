@@ -10,7 +10,7 @@ variable "gcp_project" {
 
 variable "credentials_file" {
   description = "Credentials file relative path"
-  default = "../../auth/compute-engine-sa.json"
+  default     = "../../auth/compute-engine-sa.json"
 }
 #VPC
 variable "vpc_name" {
@@ -19,7 +19,7 @@ variable "vpc_name" {
 
 variable "mtu" {
   description = "MTU of the VPC"
-  default = 1460
+  default     = 1460
 }
 
 variable "routing_mode" {
@@ -58,7 +58,7 @@ variable "pods_ip_range_name" {
 
 variable "service_ip_range_name" {
   description = "services ip range name"
-  default     = "k8s-service-range" 
+  default     = "k8s-service-range"
 }
 
 #Router
@@ -70,7 +70,7 @@ variable "router_name" {
 #NAT
 variable "nat_name" {
   description = "nat gateway name"
-  default     = "gke-nat" 
+  default     = "gke-nat"
 }
 
 variable "subnet_to_nat" {
@@ -228,4 +228,9 @@ variable "second_node_pool_tags" {
 #Artifact registry repository
 variable "repository_name" {
   description = "google artifact registry repository name"
+}
+# Ingress IP
+variable "ingress_ip_address_name" {
+  description = "ip address to be allocated to the ingress object"
+  default     = "ingress-ip"
 }

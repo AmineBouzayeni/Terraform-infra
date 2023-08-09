@@ -15,13 +15,13 @@ resource "google_compute_subnetwork" "gke_cluster_subnet" {
   network                  = google_compute_network.gke_cluster_vpc.id
   private_ip_google_access = true # Instances without external ip will access the google services.
   secondary_ip_range {
-    range_name    = var.pods_ip_range_name  #"k8s-pod-range"
-    ip_cidr_range = var.pods_ip_range #"10.48.0.0/14"
+    range_name    = var.pods_ip_range_name #"k8s-pod-range"
+    ip_cidr_range = var.pods_ip_range      #"10.48.0.0/14"
 
   }
   secondary_ip_range {
-    range_name    = var.service_ip_range_name#"k8s-service-range"
-    ip_cidr_range = var.service_ip_range #"10.52.0.0/20"
+    range_name    = var.service_ip_range_name #"k8s-service-range"
+    ip_cidr_range = var.service_ip_range      #"10.52.0.0/20"
   }
 }
 # Router and nat gateway are used to allow VMs without external IP addresses to access the internet
@@ -163,4 +163,10 @@ resource "google_artifact_registry_repository" "amineb-teolia" {
   location      = var.gcp_region
   repository_id = var.repository_name
   format        = "DOCKER"
+}
+# Create ingress IP address
+resource "google_compute_address" "ingress-ip" {
+  name         = var.ingress_ip_address_name
+  address_type = var.address_type #"EXTERNAL"
+  network_tier = var.network_tier #"PREMIUM"# on google premium backbone. STANDARD uses regular ISP networks
 }
