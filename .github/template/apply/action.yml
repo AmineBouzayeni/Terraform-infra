@@ -1,0 +1,49 @@
+name: Authenticate to GKE
+
+# Were we can define the inputs that our action will accept
+inputs:
+  github_token: 
+    required: true
+  admin_sa_key:
+    required: true
+  compute_engine_sa_key:
+    required: true   
+  action:
+    required: true 
+
+runs:
+  using: "composite" # A composite action allows you to combine multiple workflow steps within one action.
+  # Defining the action steps(Just one step to be simple)
+  steps:
+    - name: Setup Terragrunt
+      uses: autero1/action-terragrunt@v1.1.0
+      with:
+        terragrunt_version: "latest"
+        token: ${{ inputs.github_token }}
+    - name: Configure credentials for Service Account.
+      env: 
+        KEY: ${{ inputs.admin_sa_key }}
+      shell: bash  
+      run: |
+        mkdir auth
+        echo "$KEY" > auth/admin-sa-sa.json
+    - name: Apply devops service account config
+      shell: bash
+      run: |
+        cd implementations/service_account
+        terragrunt init && terragrunt ${{ inputs.action }} -auto-approve
+      env:
+        GOOGLE_CREDENTIALS: ${{ inputs.admin_sa_key }}  # Backend credentials
+    - name: Configure credentials for Kubernetes Cluster Deployment.
+      env:
+        KEY: ${{ inputs.compute_engine_sa_key }}
+      shell: bash
+      run: |
+        echo "$KEY" > auth/compute-engine-sa.json
+    - name: Apply kubernetes cluster infra config
+      shell: bash
+      run: |
+        cd implementations/kube-cluster-infra
+        terragrunt init && terragrunt ${{ inputs.action }} -auto-approve
+      env:
+        GOOGLE_CREDENTIALS: ${{ inputs.compute_engine_sa_key }}  # Backend credentials
