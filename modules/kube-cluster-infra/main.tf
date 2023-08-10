@@ -89,7 +89,7 @@ resource "google_container_cluster" "dockercoins-cluster" {
   #node_locations           = var.node_locations
   addons_config {
     http_load_balancing {
-      disabled = true
+      disabled = false
       # We are using Ingress with GKE Ingress Controller so no need for this option to be activated(need to be enabled only when using custom Ingress Controller)
     }
     horizontal_pod_autoscaling {
