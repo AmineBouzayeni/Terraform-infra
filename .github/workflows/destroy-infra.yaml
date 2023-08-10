@@ -2,7 +2,7 @@ name: Terraform Infra Destroy workflow
 run-name: Terraform Infra Destroy CI
 on:
   schedule:
-    - cron: '30 17 * * *' 
+    - cron: '30 18 * * *' 
 env:
   CLUSTER_NAME: dockercoins-cluster-teo
   CLUSTER_ZONE: europe-west1-b
