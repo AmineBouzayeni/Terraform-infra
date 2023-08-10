@@ -28,7 +28,7 @@ cluster_location = "europe-west1-b"
 #node_locations = [ "europe-west1-c" ]
 enable_fluent_bit = false
 networking_mode   = "VPC_NATIVE"
-release_channel   = "REGULAR"
+release_channel   = "UNSPECIFIED"
 
 #Node pools config
 first_name        = "first-component-pool"
