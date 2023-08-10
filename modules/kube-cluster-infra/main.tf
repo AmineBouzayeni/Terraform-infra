@@ -96,9 +96,9 @@ resource "google_container_cluster" "dockercoins-cluster" {
       disabled = false # Enable HPA
     }
   }
-  release_channel {
-    channel = var.release_channel # subscribe to the REGULAR release channel for kubernetes versions update
-  }
+  # release_channel {
+  #   channel = var.release_channel # subscribe to the REGULAR release channel for kubernetes versions update
+  # }
   # Adding this block enables IP aliasing: A network interface is associated with more than one IP address.
   ip_allocation_policy {
     cluster_secondary_range_name  = var.pods_ip_range_name
