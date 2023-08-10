@@ -136,8 +136,8 @@ variable "enable_fluent_bit" {
 variable "release_channel" {
   description = "Release channel for kubernetes version upgrades"
   validation {
-    condition     = var.release_channel == "RAPID" || var.release_channel == "REGULAR" || var.release_channel == "STABLE"
-    error_message = "Choose a release channel: RAPID, REGULAR or STABLE"
+    condition     = var.release_channel == "RAPID" || var.release_channel == "REGULAR" || var.release_channel == "STABLE" || var.release_channel == "UNSPECIFIED"
+    error_message = "Choose a release channel: RAPID, REGULAR, STABLE or UNSPECIFIED"
   }
 }
 # Node pools
