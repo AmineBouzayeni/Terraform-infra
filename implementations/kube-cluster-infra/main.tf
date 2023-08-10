@@ -49,4 +49,4 @@ module "kube_cluster_infra" {
   repository_name = var.repository_name
   # Ingress IP
   ingress_ip_address_name = var.ingress_ip_address_name
-} 
+}
