@@ -1,6 +1,6 @@
 name: Terraform Infra Deploy workflow
 run-name: Terraform Infra Deploy CI
-on: 
+on:  
   schedule:
     - cron: '50 6 * * *'
   push:
@@ -13,31 +13,10 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@master
-            - name: Setup Terragrunt
-              uses: autero1/action-terragrunt@v1.1.0
+            - name: Deploy infra
+              uses: "./.github/template/apply"
               with:
-                terragrunt_version: "latest"
-                token: ${{ secrets.GITHUB_TOKEN }}
-            - name: Configure credentials for Service Account.
-              env: 
-                KEY: ${{ secrets.ADMIN_SA_KEY }}
-              run: |
-                mkdir auth
-                echo "$KEY" > auth/admin-sa-sa.json
-            - name: Deploy devops service account
-              run: |
-                cd implementations/service_account
-                terragrunt init && terragrunt apply -auto-approve
-              env:
-                GOOGLE_CREDENTIALS: ${{ secrets.ADMIN_SA_KEY }}  # Backend credentials  
-            - name: Configure credentials for Kubernetes Cluster Deployment.
-              env:
-                KEY: ${{ secrets.COMPUTE_ENGINE_SA_KEY }}
-              run: |
-                echo "$KEY" > auth/compute-engine-sa.json
-            - name: Deploy kubernetes cluster infra
-              run: |
-                cd implementations/kube-cluster-infra
-                terragrunt init && terragrunt apply -auto-approve
-              env:
-                GOOGLE_CREDENTIALS: ${{ secrets.COMPUTE_ENGINE_SA_KEY }}  # Backend credentials
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                admin_sa_key: ${{ secrets.ADMIN_SA_KEY }}
+                compute_engine_sa_key: ${{ secrets.COMPUTE_ENGINE_SA_KEY }}
+                action: apply
