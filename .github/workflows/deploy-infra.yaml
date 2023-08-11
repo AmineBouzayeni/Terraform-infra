@@ -1,11 +1,11 @@
 name: Terraform Infra Deploy workflow
 run-name: Terraform Infra Deploy CI
-on: [push] 
-  # schedule:
-  #   - cron: '50 6 * * *'
-  # push:
-  #   branches:
-  #     - 'main'   
+on:  
+  schedule:
+    - cron: '50 6 * * *'
+  push:
+    branches:
+      - 'main'   
 jobs:
     DeployInfra:
         name: Deploy Infra
