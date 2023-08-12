@@ -1,8 +1,8 @@
 name: Terraform Infra Destroy workflow
 run-name: Terraform Infra Destroy CI
-on:
-  schedule:
-    - cron: '30 18 * * *' 
+on: [push]
+  # schedule:
+  #   - cron: '30 18 * * 1-5'
 env:
   CLUSTER_NAME: dockercoins-cluster-teo
   CLUSTER_ZONE: europe-west1-b
@@ -30,7 +30,7 @@ jobs:
         - name: Authenticate to Google Cloud
           uses: 'google-github-actions/auth@v1'
           with:
-            credentials_json: '${{ secrets.ADMIN_KEY }}'
+            credentials_json: '${{ secrets.ADMIN_SA_KEY }}'
             token_format: 'access_token'
           
         - name: Authenticate to GKE cluster
