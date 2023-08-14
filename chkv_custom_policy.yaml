@@ -1,0 +1,12 @@
+---
+metadata:
+  id: "CKV2_GCP_1"
+  name: "Ensure that kubernetes cluster has networking mode VPC native enabled"
+  category: "KUBERNETES"
+definition:
+     cond_type: "attribute"
+     resource_types:
+     - "google_container_cluster"
+     attribute: "networking_mode"
+     operator: "equals"
+     value: "VPC_NATIVE"

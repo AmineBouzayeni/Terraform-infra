@@ -29,6 +29,7 @@ jobs:
             output_file_path: results.sarif # folder and name of results file
             log_level: DEBUG # optional: set log level. Default WARNING
             container_user: 1000 # optional: Define what UID and / or what GID to run the container under to prevent permission issues
+            config_file: ./chkv_custom_policy.yaml
         
         - name: Upload SARIF file
           uses: github/codeql-action/upload-sarif@v2
