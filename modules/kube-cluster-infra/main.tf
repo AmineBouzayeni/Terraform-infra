@@ -90,7 +90,7 @@ resource "google_container_cluster" "dockercoins-cluster" {
   addons_config {
     http_load_balancing {
       disabled = false
-      # We are using Ingress with GKE Ingress Controller so no need for this option to be activated(need to be enabled only when using custom Ingress Controller)
+      # We are using Ingress with GKE Ingress Controller so we need this option to be activated.
     }
     horizontal_pod_autoscaling {
       disabled = false # Enable HPA
@@ -142,7 +142,7 @@ resource "google_container_node_pool" "second-node-pool" {
   node_count = var.second_pool_count
   management {
     auto_repair  = true
-    auto_upgrade = true
+    auto_upgrade = false
   }
   autoscaling {
     min_node_count = var.second_min_node_count

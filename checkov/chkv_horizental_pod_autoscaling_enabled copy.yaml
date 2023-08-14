@@ -1,0 +1,12 @@
+---
+metadata:
+  name: "Check release channel is UNSPECIFIED"
+  id: "CKV2_CUSTOM_5"
+  category: "KUBERNETES"
+definition:
+     cond_type: "attribute"
+     resource_types:
+     - "google_container_cluster"
+     attribute: "release_channel.channel"
+     operator: "equals"
+     value: "UNSPECIFIED"

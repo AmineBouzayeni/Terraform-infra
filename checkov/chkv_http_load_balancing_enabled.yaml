@@ -1,0 +1,12 @@
+---
+metadata:
+  name: "Check the http load balancing option is enabled"
+  id: "CKV2_CUSTOM_3"
+  category: "KUBERNETES"
+definition:
+     cond_type: "attribute"
+     resource_types:
+     - "google_container_cluster"
+     attribute: "addons_config.http_load_balancing.disabled"
+     operator: "equals"
+     value: "false"
