@@ -1,0 +1,12 @@
+---
+metadata:
+  name: "Check remove default node pool enabled"
+  id: "CKV2_CUSTOM_2"
+  category: "KUBERNETES"
+definition:
+     cond_type: "attribute"
+     resource_types:
+     - "google_container_cluster"
+     attribute: "remove_default_node_pool"
+     operator: "equals"
+     value: "true"

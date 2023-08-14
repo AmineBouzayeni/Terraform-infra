@@ -1,0 +1,12 @@
+---
+metadata:
+  name: "Check VPC_NATIVE config"
+  id: "CKV2_CUSTOM_1"
+  category: "KUBERNETES"
+definition:
+     cond_type: "attribute"
+     resource_types:
+     - "google_container_cluster"
+     attribute: "networking_mode"
+     operator: "equals"
+     value: "VPC_NATIVE"

@@ -1,0 +1,12 @@
+---
+metadata:
+  name: "Check auto upgrade is disabled"
+  id: "CKV2_CUSTOM_6"
+  category: "KUBERNETES"
+definition:
+     cond_type: "attribute"
+     resource_types:
+     - "google_container_node_pool"
+     attribute: "management.auto_upgrade"
+     operator: "equals"
+     value: "false"

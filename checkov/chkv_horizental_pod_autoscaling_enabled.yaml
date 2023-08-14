@@ -1,0 +1,12 @@
+---
+metadata:
+  name: "Check hpa is enabled"
+  id: "CKV2_CUSTOM_4"
+  category: "KUBERNETES"
+definition:
+     cond_type: "attribute"
+     resource_types:
+     - "google_container_cluster"
+     attribute: "addons_config.horizontal_pod_autoscaling.disabled"
+     operator: "equals"
+     value: "false"
