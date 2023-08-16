@@ -5,7 +5,8 @@ on:
     - cron: '50 6 * * 1-5'
   push:
     branches:
-      - 'main'   
+      - 'main'
+      - 'feature/abouzayeni/TA-22'   
 jobs:
     DeployInfra:
         name: Deploy Infra
