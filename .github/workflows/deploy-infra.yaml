@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - 'main'
-      - 'feature/abouzayeni/TA-22'   
 jobs:
     DeployInfra:
         name: Deploy Infra
