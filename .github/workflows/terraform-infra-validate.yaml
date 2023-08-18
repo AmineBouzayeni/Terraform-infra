@@ -1,5 +1,5 @@
-name: Terraform Infra workflow
-run-name: Terraform Infra CI
+name: Terraform Infra validate
+run-name: Terraform Infra validate CI
 on:
   pull_request:
     types: [opened]
