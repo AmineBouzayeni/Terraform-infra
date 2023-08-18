@@ -5,7 +5,7 @@ on:
     - cron: '50 6 * * 1-5'
   push:
     branches:
-      - 'main'   
+      - 'main'
 jobs:
     DeployInfra:
         name: Deploy Infra
